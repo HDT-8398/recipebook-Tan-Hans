@@ -10,5 +10,5 @@ class RecipeListView(ListView):
 class RecipeDetailView(DetailView):
     model = Recipe
     template_name = "ledger/recipe_detail.html"
-    context_object_name = "recipie"
+    context_object_name = "recipe"
 
