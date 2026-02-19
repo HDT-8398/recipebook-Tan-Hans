@@ -7,7 +7,6 @@ class RecipeIngredientInLine(admin.TabularInline):
 class RecipeAdmin(admin.ModelAdmin):
     inlines = [RecipeIngredientInLine]
 
-admin.site.register(Recipe)
-admin.site.register(RecipeIngredient)
+admin.site.register(Recipe, RecipeAdmin)
 admin.site.register(Ingredient)
 
