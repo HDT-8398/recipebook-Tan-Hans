@@ -6,3 +6,4 @@ urlpatterns = [
     path("recipe/<int:pk>/", views.RecipeDetailView.as_view(), name= "recipe_detail"),
 ]
 
+app_name = "ledger"
