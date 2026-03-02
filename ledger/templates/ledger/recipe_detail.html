@@ -6,7 +6,11 @@
 <h2>{{ recipe.name }}</h2>
 
 <h3>
-    Made by: {{ recipe.profile.user.username }},
+    Made by: {{ recipe.profile.name }}
+    ({{ recipe.profile.user.username}}),
+    <br>
+    Bio: {{ recipe.profile.short_bio}}
+    <br>
     Created {{ recipe.created_on|date:"Y-m-d" }},
     Updated last {{ recipe.updated_on|date:"Y-m-d" }}
 </h3>
