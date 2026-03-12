@@ -7,6 +7,8 @@
     <body>
         <h1>Recipe Book</h1>
 
+        <a href="{% url 'ledger:recipe_add' %}">Create New Recipe</a>
+        
         <ul>
         {% for recipe in recipes %}
             <li><a href="{{recipe.get_absolute_url}}">{{recipe.name}}</a></li>

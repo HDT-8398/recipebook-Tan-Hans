@@ -21,7 +21,7 @@ class Ingredient(models.Model):
 
 class Recipe(models.Model):
     name = models.CharField(max_length=50)
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name = "task_list", null = True, blank = True)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name = "recipes", null = True, blank = True)
     created_on = models.DateTimeField(auto_now_add = True)
     updated_on = models.DateTimeField(auto_now = True)
 
@@ -38,4 +38,11 @@ class RecipeIngredient(models.Model):
 
     def __str__(self):
         return "{} of {} for {}" .format(self.quantity, self.ingredient.name, self.recipe.name)
-    
+
+class RecipeImage(models.Model):
+    image = models.ImageField(upload_to="recipe_images/")
+    description = models.CharField(max_length=255)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="images")
+
+    def __str__(self):
+        return f"Image for {self.recipe.name}"

@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-<a href="{% url 'ledger:recipe_list' %}">Return to Recipe List</a>
+<a href="{% url 'ledger:recipe_list' %}">Return to Recipe List</a> |
+{% if user.is_authenticated %}
+    <a href="{% url 'ledger:recipe_add_image' recipe.pk %}">Add Image</a>
+{% endif %}
 
 <h2>{{ recipe.name }}</h2>
 
@@ -21,4 +24,16 @@
         <li>{{ ingredient.quantity }} - {{ ingredient.ingredient.name }}</li>
     {% endfor %}
 </ul>
+
+<h3>Images:</h3>
+
+{% for image in recipe.images.all %}
+    <div>
+        <img src="{{ image.image.url }}" alt = "{{ image.description }}" width ="300">
+        <p>{{ image.description }}</p>
+    </div>
+{% empty %}
+    <p>No images uploaded.</p>
+{% endfor %}
+
 {% endblock %}
